@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { WeatherType } from "../enums/WeatherTypeEnum";
 import WeatherCardDisplay from "./WeatherCardDisplay";
 import "../styles/WeatherDisplay.css";
 import { useOpenData } from "../services/useOpenWeather";
@@ -8,24 +7,6 @@ export default function WeatherDisplay() {
   const [location] = useState("Heidenheim, Germany");
 
   const { data, loading } = useOpenData(location);
-
-  const convertWeatherCondition = (weaterCondition: string) => {
-    switch (weaterCondition) {
-      case "Thunderstorm":
-        return WeatherType.Stormy;
-      case "Drizzle":
-      case "Rain":
-        return WeatherType.Rainy;
-      case "Snow":
-        return WeatherType.Snowy;
-      case "Clear":
-        return WeatherType.Sunny;
-      case "Clouds":
-        return WeatherType.Cloudy;
-      default:
-        return WeatherType.Other;
-    }
-  };
 
   return (
     <div>
