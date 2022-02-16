@@ -1,0 +1,14 @@
+h1 {
+  display: flex;
+  justify-content: left;
+}
+
+.text-accent {
+  color: darkslategray;
+  text-decoration: underline;
+}
+
+.weather-content {
+  display: flex;
+  justify-content: space-around;
+}
