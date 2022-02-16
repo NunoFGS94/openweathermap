@@ -29,7 +29,7 @@ export const useOpenData = (location: string) => {
 
   useEffect(() => {
     getData();
-  }, [location]);
+  }, [location, getData]);
 
   return { data, error, loading };
 };
