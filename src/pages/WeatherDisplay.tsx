@@ -10,7 +10,7 @@ export default function WeatherDisplay() {
 
   return (
     <div>
-      <h1>
+      <h1 data-testid="title">
         Weather in <span className="text-accent">{`${location}`}</span>
       </h1>
       <div className="weather-content">

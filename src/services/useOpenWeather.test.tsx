@@ -2,20 +2,6 @@ import { renderHook } from "@testing-library/react-hooks";
 import { NormalizedOpenWeatherSingleResp } from "./OpenWeatherSingleResponse";
 import { useOpenData } from "./useOpenWeather";
 
-const stubbedCountries = [
-  { name: "Slovakia", capital: "Bratislava" },
-  { name: "Germany", capital: "Berlin" },
-];
-const stubbedFetchUrl = "api/countriesUrl-mocked";
-
-// afterEach(() => {
-//   global.fetch.mockClear();
-// });
-
-// afterAll(() => {
-//   global.fetch.mockRestore();
-// });
-
 const mockData = {
   weather: [
     {
@@ -38,7 +24,7 @@ const mockData = {
   visibility: 123,
 };
 
-it("should return data after fetch", async () => {
+test("should return data after fetch", async () => {
   //@ts-ignore
   jest.spyOn(global, "fetch").mockImplementation(() =>
     Promise.resolve({
@@ -57,7 +43,7 @@ it("should return data after fetch", async () => {
   expect(result.current.error).toBe(undefined);
 });
 
-it("should return error after fetch", async () => {
+test("should return error after fetch", async () => {
   //@ts-ignore
   jest.spyOn(global, "fetch").mockImplementation(() =>
     Promise.resolve({
