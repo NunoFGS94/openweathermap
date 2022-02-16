@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { WeatherType } from "../enums/WeatherTypeEnum";
 import WeatherCardDisplay from "./WeatherCardDisplay";
 import "../styles/WeatherDisplay.css";
 import { useOpenData } from "../services/useOpenWeather";
@@ -9,24 +8,6 @@ export default function WeatherDisplay() {
 
   const { data, loading } = useOpenData(location);
 
-  const convertWeatherCondition = (weaterCondition: string) => {
-    switch (weaterCondition) {
-      case "Thunderstorm":
-        return WeatherType.Stormy;
-      case "Drizzle":
-      case "Rain":
-        return WeatherType.Rainy;
-      case "Snow":
-        return WeatherType.Snowy;
-      case "Clear":
-        return WeatherType.Sunny;
-      case "Clouds":
-        return WeatherType.Cloudy;
-      default:
-        return WeatherType.Other;
-    }
-  };
-
   return (
     <div>
       <h1>
@@ -34,13 +15,7 @@ export default function WeatherDisplay() {
       </h1>
       <div className="weather-content">
         {loading ? <h4>Loading...</h4> : null}
-        {data && (
-          <WeatherCardDisplay
-            weatherType={convertWeatherCondition(data.weather[0].main || "")}
-            minTemperature={data.main.temp_min}
-            maxTemperature={data.main.temp_max}
-          />
-        )}
+        {data && <WeatherCardDisplay openWeatherResponse={data} />}
       </div>
     </div>
   );

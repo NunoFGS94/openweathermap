@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
-import { OpenWeatherSingleResp } from "./OpenWeatherSingleResponse";
+import {
+  NormalizedOpenWeatherSingleResp,
+  OpenWeatherSingleResp,
+} from "./OpenWeatherSingleResponse";
 
 const openWeatherBaseApi = {
   getUrl: (location: string) =>
@@ -7,7 +10,7 @@ const openWeatherBaseApi = {
 };
 
 export const useOpenData = (location: string) => {
-  const [data, setData] = useState<OpenWeatherSingleResp>();
+  const [data, setData] = useState<NormalizedOpenWeatherSingleResp>();
   const [error, setError] = useState();
   const [loading, setLoading] = useState(true);
 
@@ -19,7 +22,10 @@ export const useOpenData = (location: string) => {
         console.log(resp);
         const data = await resp.json();
         console.log("data", data);
-        if (data) setData(data as OpenWeatherSingleResp);
+        if (data)
+          setData(
+            new NormalizedOpenWeatherSingleResp(data as OpenWeatherSingleResp)
+          );
       } catch (error: any) {
         console.log(error);
         setError(error);
