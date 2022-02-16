@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - master
+      
+env:
+  REACT_APP_OPENWEATHER_KEY: ${{secrets.REACT_APP_OPENWEATHER_KEY}}
+  
 jobs:
   build:
     runs-on: ubuntu-latest
