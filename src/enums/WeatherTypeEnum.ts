@@ -4,4 +4,5 @@ export enum WeatherType {
   Rainy,
   Stormy,
   Snowy,
+  Other,
 }
