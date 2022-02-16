@@ -1,6 +1,6 @@
 import React from "react";
 import { WeatherType } from "../enums/WeatherTypeEnum";
-import "../styles/WeatherCardDisplay.css";
+import "./WeatherCardDisplay.css";
 import { ReactComponent as SunnyIcon } from "../components/icons/sunnyIcon.svg";
 import { ReactComponent as CloudyIcon } from "../components/icons/cloudyIcon.svg";
 import { ReactComponent as SnowyIcon } from "../components/icons/snowyIcon.svg";

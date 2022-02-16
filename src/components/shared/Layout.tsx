@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/Layout.css";
+import "./Layout.css";
 
 type LayoutProps = {
   children: JSX.Element;

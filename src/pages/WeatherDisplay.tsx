@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import WeatherCardDisplay from "./WeatherCardDisplay";
-import "../styles/WeatherDisplay.css";
+import "./WeatherDisplay.css";
 import { useOpenData } from "../services/useOpenWeather";
 
 export default function WeatherDisplay() {
@@ -11,7 +11,7 @@ export default function WeatherDisplay() {
   return (
     <div>
       <h1>
-        Weather in <span className="text-accent">{location}</span>
+        Weather in <span className="text-accent">{`${location}`}</span>
       </h1>
       <div className="weather-content">
         {loading ? <h4>Loading...</h4> : null}
