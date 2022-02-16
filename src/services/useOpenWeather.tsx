@@ -11,25 +11,24 @@ export const useOpenData = (location: string) => {
   const [error, setError] = useState();
   const [loading, setLoading] = useState(true);
 
-  const getData = async () => {
-    try {
-      console.log(openWeatherBaseApi.getUrl(location));
-      const resp = await fetch(openWeatherBaseApi.getUrl(location));
-      console.log(resp);
-      const data = await resp.json();
-      console.log("data", data);
-      if (data) setData(data as OpenWeatherSingleResp);
-    } catch (error: any) {
-      console.log(error);
-      setError(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const getData = async () => {
+      try {
+        console.log(openWeatherBaseApi.getUrl(location));
+        const resp = await fetch(openWeatherBaseApi.getUrl(location));
+        console.log(resp);
+        const data = await resp.json();
+        console.log("data", data);
+        if (data) setData(data as OpenWeatherSingleResp);
+      } catch (error: any) {
+        console.log(error);
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
     getData();
-  }, [location, getData]);
+  }, [location]);
 
   return { data, error, loading };
 };
