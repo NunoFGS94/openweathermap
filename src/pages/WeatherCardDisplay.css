@@ -2,7 +2,7 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   border-radius: 10px;
-  width: 20vh;
+  width: 30vw;
 }
 
 .weather-icon {
@@ -30,7 +30,6 @@
   color: white;
   border-radius: 0px 0px 10px 10px;
 }
-
 .weather-other-info-item {
   display: flex;
   /* align-items: flex-start; */
@@ -39,7 +38,7 @@
 }
 
 .weather-info-item p {
-  font-size: 2em;
+  font-size: 2rem;
   margin: 0;
 }
 
@@ -49,4 +48,19 @@
 
 .max {
   color: darksalmon;
+}
+
+svg .weather-other-info-item > .icon-tabler {
+  width: 24px;
+}
+
+@media (max-width: 900px) {
+  .card {
+    width: 50vw;
+  }
+
+  .weather-info-item p {
+    font-size: 1rem;
+    margin: 0;
+  }
 }

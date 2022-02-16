@@ -1,6 +1,7 @@
 h1 {
   display: flex;
-  justify-content: left;
+  justify-content: center;
+  white-space: break-spaces;
 }
 
 .text-accent {
@@ -11,4 +12,10 @@ h1 {
 .weather-content {
   display: flex;
   justify-content: space-around;
+}
+
+@media (max-width: 900px) {
+  h1 {
+    font-size: 1.2em;
+  }
 }
