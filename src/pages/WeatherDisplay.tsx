@@ -5,9 +5,9 @@ import "../styles/WeatherDisplay.css";
 import { useOpenData } from "../services/useOpenWeather";
 
 export default function WeatherDisplay() {
-  const [location, setLocation] = useState("Heidenheim, Germany");
+  const [location] = useState("Heidenheim, Germany");
 
-  const { data, error, loading } = useOpenData(location);
+  const { data, loading } = useOpenData(location);
 
   const convertWeatherCondition = (weaterCondition: string) => {
     switch (weaterCondition) {
