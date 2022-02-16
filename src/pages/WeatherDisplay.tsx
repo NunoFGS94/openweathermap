@@ -34,13 +34,7 @@ export default function WeatherDisplay() {
       </h1>
       <div className="weather-content">
         {loading ? <h4>Loading...</h4> : null}
-        {data && (
-          <WeatherCardDisplay
-            weatherType={convertWeatherCondition(data.weather[0].main || "")}
-            minTemperature={data.main.temp_min}
-            maxTemperature={data.main.temp_max}
-          />
-        )}
+        {data && <WeatherCardDisplay openWeatherResponse={data} />}
       </div>
     </div>
   );

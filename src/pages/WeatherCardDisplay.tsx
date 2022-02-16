@@ -7,18 +7,26 @@ import { ReactComponent as SnowyIcon } from "../components/icons/snowyIcon.svg";
 import { ReactComponent as StormyIcon } from "../components/icons/stormyIcon.svg";
 import { ReactComponent as RainyIcon } from "../components/icons/rainyIcon.svg";
 import { ReactComponent as UnknownIcon } from "../components/icons/unknownIcon.svg";
+import { ReactComponent as HumidityIcon } from "../components/icons/humidityIcon.svg";
+import { ReactComponent as VisibilityIcon } from "../components/icons/visibilityIcon.svg";
+import { ReactComponent as WindIcon } from "../components/icons/windIcon.svg";
+import { NormalizedOpenWeatherSingleResp } from "../services/OpenWeatherSingleResponse";
 
 type WeatherCardDisplayProps = {
-  minTemperature: number;
-  maxTemperature: number;
-  weatherType: WeatherType;
+  openWeatherResponse: NormalizedOpenWeatherSingleResp;
 };
 
 export default function WeatherCardDisplay({
-  minTemperature,
-  maxTemperature,
-  weatherType,
+  openWeatherResponse,
 }: WeatherCardDisplayProps) {
+  const {
+    weatherType,
+    minTemperature,
+    maxTemperature,
+    windSpeed,
+    humidity,
+    visibility,
+  } = openWeatherResponse;
   const getWeatherIcon = (weatherType: WeatherType) => {
     switch (weatherType) {
       case WeatherType.Sunny:
@@ -47,6 +55,20 @@ export default function WeatherCardDisplay({
         <div className="weather-info-item max">
           Max Temp
           <p data-testid="maxTemperature">{maxTemperature}ºC</p>
+        </div>
+      </div>
+      <div className="weather-other-info-container">
+        <div data-testid="humidity" className="weather-other-info-item">
+          <WindIcon />
+          <span>{windSpeed}m/s</span>
+        </div>
+        <div data-testid="humidity" className="weather-other-info-item">
+          <HumidityIcon />
+          <span>{humidity}%</span>
+        </div>
+        <div data-testid="humidity" className="weather-other-info-item">
+          <VisibilityIcon />
+          <span>{visibility}m</span>
         </div>
       </div>
     </div>
