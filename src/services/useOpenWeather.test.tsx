@@ -32,11 +32,9 @@ test("should return data after fetch", async () => {
     })
   );
 
-  // Execute
   const { result, waitForNextUpdate } = renderHook(() => useOpenData(""));
   await waitForNextUpdate();
 
-  // Assert
   expect(result.current.data).toStrictEqual(
     new NormalizedOpenWeatherSingleResp(mockData)
   );
@@ -51,11 +49,9 @@ test("should return error after fetch", async () => {
     })
   );
 
-  // Execute
   const { result, waitForNextUpdate } = renderHook(() => useOpenData(""));
   await waitForNextUpdate();
 
-  // Assert
   expect(result.current.error).toStrictEqual("error");
   expect(result.current.data).toStrictEqual(undefined);
 });
