@@ -1,8 +1,16 @@
 # Getting Started with Create React App
 
+You can try the website at [`here`](http://nfgs-openweather.s3-website.eu-west-3.amazonaws.com/)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
+
+To start this project you need to add a `.env` file to the root directory with the following code:
+
+```
+REACT_APP_OPENWEATHER_KEY={your open weather api key}
+```
 
 In the project directory, you can run:
 
