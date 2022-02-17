@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import WeatherCardDisplay from "./WeatherCardDisplay";
 import "./WeatherDisplay.css";
 import { useOpenData } from "../services/useOpenWeather";
+import Loading from "../components/Loading";
+import Error from "../components/Error";
 
 export default function WeatherDisplay() {
   const [location] = useState("Heidenheim, Germany");
 
-  const { data, loading } = useOpenData(location);
+  const { data, error, loading } = useOpenData(location);
 
   return (
     <div>
@@ -14,7 +16,8 @@ export default function WeatherDisplay() {
         Weather in <span className="text-accent">{`${location}`}</span>
       </h1>
       <div className="weather-content">
-        {loading ? <h4>Loading...</h4> : null}
+        {loading ? <Loading /> : null}
+        {error && <Error />}
         {data && <WeatherCardDisplay openWeatherResponse={data} />}
       </div>
     </div>
