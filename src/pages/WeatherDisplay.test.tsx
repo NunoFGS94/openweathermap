@@ -14,11 +14,27 @@ const mockData = {
 
 jest.mock("../services/useOpenWeather");
 
-test("should", () => {
+test("should display data", () => {
   //@ts-ignore
   useOpenData.mockReturnValue({ loading: false, data: mockData });
 
   render(<WeatherDisplay />);
   expect(screen.getByTestId("title").textContent).toContain("Weather in");
   expect(screen.getByText(`Min Temp`)).toBeInTheDocument();
+});
+
+test("should display loader", () => {
+  //@ts-ignore
+  useOpenData.mockReturnValue({ loading: true });
+
+  render(<WeatherDisplay />);
+  expect(screen.getByTestId("loading")).toBeInTheDocument();
+});
+
+test("should display error", () => {
+  //@ts-ignore
+  useOpenData.mockReturnValue({ error: true });
+
+  render(<WeatherDisplay />);
+  expect(screen.getByTestId("error")).toBeInTheDocument();
 });
